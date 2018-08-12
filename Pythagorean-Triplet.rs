@@ -22,16 +22,21 @@ fn main(){
     print!("{}", sam());
 }
 
-fn sam() -> i32 {
-	let mut result:i32 = 0;
-	for i in 1..1000{
-    	for j in 1..1000 {
-    		for k in 1..1000{
-    			if i+j+k == 1000 && ( i*i + j*j ) == k*k {
-    				result = i*j*k;
-    			}
-    		}
-    	}
+fn sam() ->  Option<u32> {
+    let mut a:u32;
+    let mut b:u32;
+    let mut c:u32;
+    let limit = 1000;
+    for m in 2..limit{
+        for n in 1..m{
+            a = m*m - n*n;
+            b = 2*m*n;
+            c = m*m + n*n;
+
+            if a+b+c == 1000{
+                return Some(a*b*c);
+            }
+        }
     }
-    result
+    None
 }
