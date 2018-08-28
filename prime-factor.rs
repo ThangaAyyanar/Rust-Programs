@@ -13,6 +13,7 @@ pub fn factors(n: u64) -> Vec<u64> {
             counter = find_next_prime(counter);
         }
     }
+    print!("{:?}\n",primeFactors);
     return primeFactors;
 }
 
@@ -33,12 +34,12 @@ fn find_next_prime(n:u64) -> u64 {
 }
 
 fn is_prime(num:&u64) -> bool{
-    
-    for i in 3..(*num-1){
-        if num % i == 0 {
+    let mut factor:u64 = 2;
+    while factor * factor <= *num {
+        if num % factor == 0 {
             return false;
         }
+        factor = factor + 1;
     }
-    return true
-
+    true
 }
